@@ -4,10 +4,9 @@ function [llik]=llik_fun(x,theta)
         P0 = theta(1)/(1-theta(3)^2);
         H =(pi^2/2)*eye(size(x,1)); %variance of chi squared distribution
         sigmaEta= theta(1);
-        c = -1.27;%mean 
+        c = -1.27;%mean of xt???????
         d = theta(2); %omega
-        mT = theta(3); %phi 
-       
+        mT = theta(3); %phi     
     
 %% Kalman filter derivation
   %% 1.initialization
@@ -36,6 +35,7 @@ for t = 1:T
     vA(t) = a;
     vU(t) = vA(t);
         
+    % missing values threathment
        vV(t) = vy(t) - c - mZ*vA(t);
        mF(t) = mZ*mP(t)*mZ' + mH(t,t);
        mK(t) = mT*mP(t)*mZ'*inv(mF(t));
