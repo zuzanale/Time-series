@@ -50,9 +50,9 @@ for t = T:-1:1
 vR(t) = r;
 mN(t) = n; 
     r = mZ*inv(mF(t))*vV(t) + mL(t)*r; %eq 4.38 pg.89
-    vAlphasmooth(t) = vA(t) + mP(t)*r ; %eq  4.39, first part
+    vAlphasmooth(t) = vA(t) + mP(t)*r + d; %eq  4.39, first part
 
     n = mZ*inv(mF(t))*mZ' + mL(t)*n*mL(t)';%eq 4.42
-    mV(t) = mP(t) - mP(t)*n*mP(t)';%eq 4.40 or %eq 4.43 together
+    mV(t) = mP(t) - mP(t)*n*mP(t)' - c;%eq 4.40 or %eq 4.43 together
 end
 end
